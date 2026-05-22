@@ -2,7 +2,7 @@
 
 /* ============================================================
    S NEW ROOF INC. — DIFFERENTIATORS & VERSATILITY MATRIX
-   5 core pillars + material partners + vertical tags
+   5 core pillars + Material Integrity Block + Building Verticals
    ============================================================ */
 
 const pillars = [
@@ -13,7 +13,7 @@ const pillars = [
       </svg>
     ),
     title: 'Over 20 Years of Experience',
-    desc: 'Trusted expertise since 2004.',
+    desc: 'Most innovative techniques.',
   },
   {
     icon: (
@@ -22,7 +22,7 @@ const pillars = [
       </svg>
     ),
     title: 'Unmatched Warranty',
-    desc: 'Comprehensive coverage you can rely on.',
+    desc: 'Comprehensive service coverage.',
   },
   {
     icon: (
@@ -31,7 +31,7 @@ const pillars = [
       </svg>
     ),
     title: 'Quality Materials',
-    desc: 'Owens Corning, Polyglass, GAF, CertainTeed.',
+    desc: 'Trusted brand partnerships.',
   },
   {
     icon: (
@@ -40,7 +40,7 @@ const pillars = [
       </svg>
     ),
     title: 'Licensed and Insured',
-    desc: 'C-39 #1122623. Fully bonded.',
+    desc: 'State of California required licenses and insurance to protect your home.',
   },
   {
     icon: (
@@ -74,15 +74,26 @@ export default function Differentiators() {
           ))}
         </div>
 
-        {/* Material Partners */}
-        <div className="snr-partners">
-          <span className="snr-partner">Owens Corning</span>
-          <span className="snr-partner">Polyglass</span>
-          <span className="snr-partner">GAF</span>
-          <span className="snr-partner">CertainTeed</span>
+        {/* Material Integrity Block with image_34378c.jpg */}
+        <div className="snr-materials-block">
+          <div className="snr-materials-content">
+            <h3 className="snr-materials-title">
+              We use only the best materials for your project.
+            </h3>
+            <p className="snr-materials-desc">
+              Our good relationships with reputable brands allow us to offer you peace
+              of mind through our extensive warranties.
+            </p>
+          </div>
+          <div className="snr-materials-image">
+            <img
+              src="/images/image_34378c.jpg"
+              alt="Our trusted material supplier brands — Owens Corning, Polyglass, GAF, CertainTeed"
+            />
+          </div>
         </div>
 
-        {/* Asset Verticals */}
+        {/* Building Versatility Badges */}
         <div className="snr-verticals">
           <span className="snr-vertical-tag">Residential</span>
           <span className="snr-vertical-divider">|</span>

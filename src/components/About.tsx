@@ -2,7 +2,7 @@
 
 /* ============================================================
    S NEW ROOF INC. — ABOUT SECTION
-   Corporate brief, trust data, and stat highlights
+   Corporate brief, estimate protocol, and trust stat highlights
    ============================================================ */
 
 export default function About() {
@@ -24,11 +24,19 @@ export default function About() {
             </p>
 
             <div className="snr-about-highlight">
+              <h3 style={{
+                fontFamily: 'var(--snr-font-heading)',
+                fontSize: '0.9375rem',
+                fontWeight: 700,
+                color: 'var(--snr-text-heading)',
+                marginBottom: '8px',
+              }}>
+                Free Estimates and Lasting Solutions
+              </h3>
               <p>
-                Trust in our work is backed by our extensive warranty. Our estimates are completely
-                free and without any obligation. However, it is a requirement that they be scheduled
-                in advance, allowing our team to coordinate a visit to assess the condition of your
-                roof for a more accurate estimate.
+                We provide free, no-obligation estimates, but they must be scheduled in advance.
+                This allows our team to coordinate a visit to assess the condition of your roof
+                for a more accurate estimate. Trust in our work is backed by our extensive warranty.
               </p>
             </div>
           </div>

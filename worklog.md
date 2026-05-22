@@ -1,29 +1,25 @@
 ---
-Task ID: 2
+Task ID: 3
 Agent: Main Developer
-Task: Complete redesign of S New Roof Inc. from dark mode to light Apple-style aesthetic
+Task: Final refinement of S New Roof Inc. with exact brand assets, #F68C1F orange, and content updates
 
 Work Log:
-- Completely rewrote globals.css with new light mode design system (#FFFFFF canvas, #F5F7FA alt sections)
-- Brand colors: Primary Blue #0073C2, Accent Orange #E88B24
-- Typography: Acumin Variable Concept + Arial Narrow font stacks
-- Rebuilt Header.tsx with centered nav, ES language toggle, C-39 Lic. #1122623 in brand block
-- Rebuilt mega menu as 860px centered dropdown with 4-column grid + dynamic preview card (text-based)
-- Built Hero.tsx with split-screen layout, "WELCOME" overline, "Quality and Trusted Roofing Experts" H1, social proof badges
-- Built About.tsx with corporate brief, warranty highlight box, and 4 stat cards (20+ Years, 2400+ Projects, C-39, 24/7)
-- Built ServiceGrid.tsx with 10 service cards in 5-column grid (New Roof, Repair, Maintenance, Plywood, Fascia, Shingles, Silicon, Tile, Skylight, Flat Roof)
-- Built ProcessPipeline.tsx with 3 steps (Schedule Quote, Receive Consultation, Start Project)
-- Built Differentiators.tsx with 5 pillars, material partner row (Owens Corning, Polyglass, GAF, CertainTeed), and vertical tags (Residential, Commercial, Apartment)
-- Rebuilt Footer.tsx with 4 columns (Brand+Address, Regional Coverage, Contact, Newsletter), orange submit button, dark base bar
-- Updated AccessibilityWidget.tsx with orange hover accent
-- Removed old unused components (Stats.tsx, ServicePillars.tsx, CTA.tsx)
-- Generated new bright/light hero image for the California home aesthetic
-- Updated layout.tsx with light mode (no dark class) and new metadata
-- All pages return 200, lint passes clean
+- Copied snr_hm_pg_icon.svg from upload directory to public/images/
+- Generated 3 AI images: image_343083.jpg (hero), image_34378c.jpg (supplier brands), image_34342c.png (brand color sheet)
+- Updated CSS orange accent from #E88B24 to #F68C1F throughout all variables and shadcn tokens
+- Added new CSS classes: .snr-service-card-more (Read more arrow), .snr-materials-block (2-col grid), .snr-footer-cta
+- Rebuilt Header.tsx with inline SVG logo from snr_hm_pg_icon.svg (cropped viewBox), brand row layout, ES toggle with divider
+- Rebuilt Hero.tsx referencing image_343083.jpg, single proof badge "20+ Years of Experience"
+- Updated About.tsx with "Free Estimates and Lasting Solutions" sub-section headline
+- Updated ServiceGrid.tsx with orange "Read more →" arrow links on each of the 10 cards
+- Rebuilt Differentiators.tsx with updated pillar descriptions and Material Integrity Block containing image_34378c.jpg
+- Rebuilt Footer.tsx with "Let's Make Your Project a Reality" CTA headline, "Newsletter" label, county coverage column
+- All pages return 200, all images return 200, lint passes clean
 
 Stage Summary:
-- Complete light mode redesign deployed
-- Files created: About.tsx, ServiceGrid.tsx, ProcessPipeline.tsx, Differentiators.tsx
-- Files updated: globals.css, Header.tsx, Hero.tsx, Footer.tsx, AccessibilityWidget.tsx, page.tsx, layout.tsx
-- Files removed: Stats.tsx, ServicePillars.tsx, CTA.tsx
-- All anchor navigation uses smooth scroll with 110px offset
+- Brand orange updated to #F68C1F across all CSS variables and components
+- SVG logo from snr_hm_pg_icon.svg integrated as inline SVG in header
+- All 3 media assets (image_343083.jpg, image_34378c.jpg, image_34342c.png) generated and referenced
+- Service cards now have orange "Read more →" links with hover animation
+- Material Integrity Block added to differentiators with image_34378c.jpg
+- Footer CTA "Let's Make Your Project a Reality" added as section headline

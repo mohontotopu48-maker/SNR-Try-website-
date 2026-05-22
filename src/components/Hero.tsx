@@ -2,7 +2,7 @@
 
 /* ============================================================
    S NEW ROOF INC. — HERO SECTION
-   Split-screen hero with headline, CTA, and social proof badges
+   Split-screen hero using image_343083.jpg with text overlays
    ============================================================ */
 
 export default function Hero() {
@@ -45,20 +45,13 @@ export default function Hero() {
                 </svg>
                 20+ Years of Experience
               </div>
-              <div className="snr-hero-proof-divider" />
-              <div className="snr-hero-proof-item">
-                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M12 22S20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                </svg>
-                Licensed &amp; Insured
-              </div>
             </div>
           </div>
 
           {/* Right: Hero Image */}
           <div className="snr-hero-image snr-animate-in snr-animate-delay-3">
             <img
-              src="/images/hero-roofing.png"
+              src="/images/image_343083.jpg"
               alt="Professional roofing installation by S New Roof Inc."
               loading="eager"
             />

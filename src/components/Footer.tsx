@@ -2,47 +2,58 @@
 
 /* ============================================================
    S NEW ROOF INC. — FOOTER
-   Compliance utility footer with brand, regions, contact, newsletter
+   CTA headline, brand, regions, contact, newsletter, base bar
    ============================================================ */
 
 export default function Footer() {
   return (
-    <footer role="contentinfo">
+    <footer role="contentinfo" id="contact">
       {/* Main Footer */}
       <div className="snr-footer">
         <div className="snr-container">
+          {/* CTA Headline */}
+          <div className="snr-footer-cta">
+            <h2 className="snr-heading-lg">Let&apos;s Make Your Project a Reality</h2>
+            <p className="snr-body-sm" style={{ marginTop: '12px', color: 'var(--snr-text-muted)', maxWidth: '480px', margin: '12px auto 0' }}>
+              Contact us today for a free estimate and let our experts bring your roofing project to life.
+            </p>
+          </div>
+
           <div className="snr-footer-grid">
             {/* Column 1: Brand & Address */}
             <div>
-              <a href="#" className="snr-brand" style={{ display: 'inline-flex' }} aria-label="S New Roof Inc. — Home">
-                <span className="snr-brand-name">S New Roof Inc.</span>
-                <span className="snr-brand-license">C-39 Lic. #1122623</span>
-              </a>
+              <div style={{ marginBottom: '12px' }}>
+                <span style={{
+                  fontFamily: 'var(--snr-font-heading)',
+                  fontSize: '0.875rem',
+                  fontWeight: 800,
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  color: 'var(--snr-text-heading)',
+                }}>
+                  S New Roof Inc.
+                </span>
+              </div>
 
-              <p className="snr-footer-brand-desc">
-                Full-spectrum commercial and residential roofing asset management.
-                Licensed, bonded, and insured across California.
-              </p>
+              <div className="snr-footer-license" style={{ marginTop: '0', color: 'var(--snr-text-body)' }}>
+                License Number: 1122623
+              </div>
 
-              <div className="snr-footer-address">
+              <div className="snr-footer-address" style={{ marginTop: '12px' }}>
                 1415 E 17th Street Suite 220 A<br />
                 Santa Ana, CA 92705
               </div>
-
-              <div className="snr-footer-license">
-                C-39 License Number: 1122623
-              </div>
             </div>
 
-            {/* Column 2: Regional Coverage */}
+            {/* Column 2: Counties Covered */}
             <div>
-              <div className="snr-footer-column-title">Regional Coverage</div>
+              <div className="snr-footer-column-title">Counties Covered</div>
               <div className="snr-footer-link" style={{ cursor: 'default' }}>Los Angeles County</div>
               <div className="snr-footer-link" style={{ cursor: 'default' }}>Riverside County</div>
               <div className="snr-footer-link" style={{ cursor: 'default' }}>Orange County</div>
             </div>
 
-            {/* Column 3: Contact Channels */}
+            {/* Column 3: Direct Channels */}
             <div>
               <div className="snr-footer-column-title">Contact</div>
               <div className="snr-footer-contact-item">
@@ -61,9 +72,9 @@ export default function Footer() {
 
             {/* Column 4: Newsletter */}
             <div className="snr-newsletter">
-              <div className="snr-newsletter-label">Seasonal Intel</div>
+              <div className="snr-newsletter-label">Newsletter</div>
               <p className="snr-newsletter-desc">
-                Receive Information — Quarterly roof health insights,
+                Receive information — Quarterly roof health insights,
                 regulatory updates, and maintenance schedules.
               </p>
               <form
@@ -106,7 +117,7 @@ export default function Footer() {
             Copyright &copy; 2026 Snewroof. All rights reserved.
           </div>
           <div className="snr-base-bar-right">
-            CRM by Platform &nbsp;|&nbsp; Site by Agency
+            Development and CRM Agency Credits.
           </div>
         </div>
       </div>
