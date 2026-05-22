@@ -2,15 +2,16 @@
 
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import Stats from '@/components/Stats';
-import ServicePillars from '@/components/ServicePillars';
-import CTA from '@/components/CTA';
+import About from '@/components/About';
+import ServiceGrid from '@/components/ServiceGrid';
+import ProcessPipeline from '@/components/ProcessPipeline';
+import Differentiators from '@/components/Differentiators';
 import Footer from '@/components/Footer';
 import AccessibilityWidget from '@/components/AccessibilityWidget';
 
 /* ============================================================
    S NEW ROOF INC. — MAIN PAGE
-   Assembles all sections into a single cohesive landing page
+   Single-page layout assembling all sections
    ============================================================ */
 
 export default function Home() {
@@ -25,9 +26,10 @@ export default function Home() {
     >
       <Header />
       <Hero />
-      <Stats />
-      <ServicePillars />
-      <CTA />
+      <About />
+      <ServiceGrid />
+      <ProcessPipeline />
+      <Differentiators />
       <div style={{ marginTop: 'auto' }}>
         <Footer />
       </div>

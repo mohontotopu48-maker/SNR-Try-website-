@@ -2,50 +2,67 @@
 
 /* ============================================================
    S NEW ROOF INC. — HERO SECTION
-   Full-viewport hero with background image, headline, and CTAs
+   Split-screen hero with headline, CTA, and social proof badges
    ============================================================ */
 
 export default function Hero() {
   return (
     <section className="snr-hero" aria-labelledby="hero-heading">
-      {/* Background Image */}
-      <div className="snr-hero-bg" aria-hidden="true">
-        <img
-          src="/images/hero-roofing.png"
-          alt=""
-          loading="eager"
-        />
-      </div>
+      <div className="snr-container">
+        <div className="snr-hero-inner">
+          {/* Left: Content */}
+          <div className="snr-hero-content">
+            <span className="snr-hero-overline snr-animate-in snr-animate-delay-1">
+              Welcome
+            </span>
 
-      {/* Hero Content */}
-      <div className="snr-hero-content">
-        <span className="snr-hero-label snr-animate-in snr-animate-delay-1">
-          Commercial &amp; Residential Roofing
-        </span>
+            <h1 id="hero-heading" className="snr-hero-title snr-animate-in snr-animate-delay-2">
+              Quality and Trusted Roofing Experts
+            </h1>
 
-        <h1 id="hero-heading" className="snr-hero-title snr-animate-in snr-animate-delay-2">
-          Precision Roofing
-          <br />
-          for the Built
-          <br />
-          Environment
-        </h1>
+            <p className="snr-hero-subtitle snr-animate-in snr-animate-delay-3">
+              We are the go-to provider for roof repair, inspection, and new roof
+              installation in California.
+            </p>
 
-        <p className="snr-hero-subtitle snr-animate-in snr-animate-delay-3">
-          From emergency tarping to Title 24 compliance — S New Roof Inc. delivers
-          end-to-end roofing asset management with zero compromise.
-        </p>
+            <div className="snr-hero-actions snr-animate-in snr-animate-delay-4">
+              <a href="tel:7147704756" className="snr-btn-primary">
+                {/* Phone icon */}
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 2H6L7.5 6.5L5.5 8C6.57 10.15 8.35 11.93 10.5 13L12 11L16 12.5V15C16 15.55 15.55 16 15 16C7.82 16 2 10.18 2 3C2 2.45 2.45 2 3 2Z" fill="currentColor" />
+                </svg>
+                Call Us
+              </a>
+              <a href="#services" className="snr-btn-outline">
+                Our Services
+              </a>
+            </div>
 
-        <div className="snr-hero-actions snr-animate-in snr-animate-delay-4">
-          <a href="#contact" className="snr-btn-primary">
-            Request Assessment
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-          <a href="#maintenance" className="snr-btn-secondary">
-            Explore Services
-          </a>
+            <div className="snr-hero-proof snr-animate-in snr-animate-delay-4">
+              <div className="snr-hero-proof-item">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M8 1L10.5 5.5L15.5 6.3L11.75 9.8L12.6 14.8L8 12.3L3.4 14.8L4.25 9.8L0.5 6.3L5.5 5.5L8 1Z" fill="currentColor" />
+                </svg>
+                20+ Years of Experience
+              </div>
+              <div className="snr-hero-proof-divider" />
+              <div className="snr-hero-proof-item">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M12 22S20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                </svg>
+                Licensed &amp; Insured
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Hero Image */}
+          <div className="snr-hero-image snr-animate-in snr-animate-delay-3">
+            <img
+              src="/images/hero-roofing.png"
+              alt="Professional roofing installation by S New Roof Inc."
+              loading="eager"
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -1,28 +1,29 @@
 ---
-Task ID: 1
+Task ID: 2
 Agent: Main Developer
-Task: Build comprehensive S New Roof Inc. commercial roofing platform
+Task: Complete redesign of S New Roof Inc. from dark mode to light Apple-style aesthetic
 
 Work Log:
-- Read project structure and existing files (Next.js 16, Tailwind CSS 4, shadcn/ui)
-- Designed and implemented complete CSS design system in globals.css with custom properties
-- Built Header component with interactive 2-column mega menu (4 service pillars + dynamic preview card)
-- Built Hero section with full-viewport background image, headline, and CTAs
-- Built Stats bar with 4 key performance metrics
-- Built Service Pillars section with 4 verticals (Maintenance, Logistics, Construction, Compliance) each with 4 cards and anchor IDs
-- Built CTA section with call-to-action buttons
-- Built Footer with 6 columns (Brand+Contact, Maintenance, Logistics, Construction, Compliance, Newsletter)
-- Built bottom base bar with copyright and CRM credits
-- Built Accessibility Widget with fixed button and toggle panel
-- Generated 5 AI images (hero + 4 service preview cards) using z-ai image generation CLI
-- Fixed anchor links to use proper hash-based navigation (#maintenance-inspections, #logistics-emergency, etc.)
-- Updated layout.tsx with dark mode class and proper metadata
+- Completely rewrote globals.css with new light mode design system (#FFFFFF canvas, #F5F7FA alt sections)
+- Brand colors: Primary Blue #0073C2, Accent Orange #E88B24
+- Typography: Acumin Variable Concept + Arial Narrow font stacks
+- Rebuilt Header.tsx with centered nav, ES language toggle, C-39 Lic. #1122623 in brand block
+- Rebuilt mega menu as 860px centered dropdown with 4-column grid + dynamic preview card (text-based)
+- Built Hero.tsx with split-screen layout, "WELCOME" overline, "Quality and Trusted Roofing Experts" H1, social proof badges
+- Built About.tsx with corporate brief, warranty highlight box, and 4 stat cards (20+ Years, 2400+ Projects, C-39, 24/7)
+- Built ServiceGrid.tsx with 10 service cards in 5-column grid (New Roof, Repair, Maintenance, Plywood, Fascia, Shingles, Silicon, Tile, Skylight, Flat Roof)
+- Built ProcessPipeline.tsx with 3 steps (Schedule Quote, Receive Consultation, Start Project)
+- Built Differentiators.tsx with 5 pillars, material partner row (Owens Corning, Polyglass, GAF, CertainTeed), and vertical tags (Residential, Commercial, Apartment)
+- Rebuilt Footer.tsx with 4 columns (Brand+Address, Regional Coverage, Contact, Newsletter), orange submit button, dark base bar
+- Updated AccessibilityWidget.tsx with orange hover accent
+- Removed old unused components (Stats.tsx, ServicePillars.tsx, CTA.tsx)
+- Generated new bright/light hero image for the California home aesthetic
+- Updated layout.tsx with light mode (no dark class) and new metadata
 - All pages return 200, lint passes clean
 
 Stage Summary:
-- Complete production-ready front-end for S New Roof Inc.
-- Files created: Header.tsx, Hero.tsx, Stats.tsx, ServicePillars.tsx, CTA.tsx, Footer.tsx, AccessibilityWidget.tsx
-- Files updated: globals.css, page.tsx, layout.tsx
-- Images generated: hero-roofing.png, service-maintenance.png, service-logistics.png, service-construction.png, service-compliance.png
-- Design system: Dark canvas (#060B12), emerald accent (#00A870), white headings, muted gray body text
-- All interactions: mega menu hover, preview card swap, smooth scroll, accessibility toggle, mobile menu
+- Complete light mode redesign deployed
+- Files created: About.tsx, ServiceGrid.tsx, ProcessPipeline.tsx, Differentiators.tsx
+- Files updated: globals.css, Header.tsx, Hero.tsx, Footer.tsx, AccessibilityWidget.tsx, page.tsx, layout.tsx
+- Files removed: Stats.tsx, ServicePillars.tsx, CTA.tsx
+- All anchor navigation uses smooth scroll with 110px offset

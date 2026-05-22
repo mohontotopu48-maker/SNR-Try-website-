@@ -14,26 +14,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "S New Roof Inc. — Commercial & Residential Roofing",
+  title: "S New Roof Inc. — Quality and Trusted Roofing Experts",
   description:
-    "Full-spectrum commercial and residential roofing asset management. Maintenance, logistics, construction, and compliance — end-to-end.",
+    "We are the go-to provider for roof repair, inspection, and new roof installation in California. Over 20 years of experience. Licensed C-39 #1122623.",
   keywords: [
     "commercial roofing",
     "residential roofing",
-    "roof inspection",
+    "roof repair",
+    "roof installation",
     "Title 24",
     "emergency tarping",
     "solar integration",
     "S New Roof",
+    "California roofing contractor",
   ],
   authors: [{ name: "S New Roof Inc." }],
   icons: {
     icon: "/logo.svg",
   },
   openGraph: {
-    title: "S New Roof Inc. — Precision Roofing for the Built Environment",
+    title: "S New Roof Inc. — Quality and Trusted Roofing Experts",
     description:
-      "From emergency tarping to Title 24 compliance — end-to-end roofing asset management with zero compromise.",
+      "Roof repair, inspection, and new roof installation in California. Over 20 years of experience.",
     type: "website",
   },
 };
@@ -44,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

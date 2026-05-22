@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 
 /* ============================================================
    S NEW ROOF INC. — HEADER WITH MEGA MENU
-   Fixed sticky header with 2-column split-panel mega dropdown
+   Fixed sticky header with centered nav, ES toggle, and license
    ============================================================ */
 
 interface ServiceItem {
@@ -16,14 +16,16 @@ interface ServiceColumn {
   key: string;
   title: string;
   items: ServiceItem[];
-  previewImage: string;
+  previewTitle: string;
+  previewDesc: string;
 }
 
 const serviceColumns: ServiceColumn[] = [
   {
     key: 'maintenance',
     title: 'Maintenance',
-    previewImage: '/images/service-maintenance.png',
+    previewTitle: 'Roof Maintenance',
+    previewDesc: 'Proactive care programs to extend roof lifecycle and reduce lifecycle costs.',
     items: [
       { label: 'Roof Inspections', href: '#maintenance-inspections' },
       { label: 'Leak Detection', href: '#maintenance-leak-detection' },
@@ -34,7 +36,8 @@ const serviceColumns: ServiceColumn[] = [
   {
     key: 'logistics',
     title: 'Logistics',
-    previewImage: '/images/service-logistics.png',
+    previewTitle: 'Roofing Logistics',
+    previewDesc: 'Rapid response and aerial intelligence for emergency situations.',
     items: [
       { label: 'Emergency Tarping', href: '#logistics-emergency' },
       { label: 'Asset Monitoring', href: '#logistics-asset-monitoring' },
@@ -45,18 +48,20 @@ const serviceColumns: ServiceColumn[] = [
   {
     key: 'construction',
     title: 'Construction',
-    previewImage: '/images/service-construction.png',
+    previewTitle: 'New Construction',
+    previewDesc: 'Complete roofing systems engineered for longevity and compliance.',
     items: [
-      { label: 'New Roof Installation', href: '#construction-new-roof' },
-      { label: 'Commercial Re-Roofing', href: '#construction-re-roofing' },
-      { label: 'Solar Integration', href: '#construction-solar' },
-      { label: 'Skylight Builds', href: '#construction-skylights' },
+      { label: 'New Roof Installation', href: '#services' },
+      { label: 'Commercial Re-Roofing', href: '#services' },
+      { label: 'Solar Integration', href: '#services' },
+      { label: 'Skylight Builds', href: '#services' },
     ],
   },
   {
     key: 'compliance',
     title: 'Compliance',
-    previewImage: '/images/service-compliance.png',
+    previewTitle: 'Regulatory Compliance',
+    previewDesc: 'Title 24 audits, certifications, and warranty management services.',
     items: [
       { label: 'Title 24 Cool Roof Audits', href: '#compliance-title24' },
       { label: 'Structural Certifications', href: '#compliance-certifications' },
@@ -65,13 +70,6 @@ const serviceColumns: ServiceColumn[] = [
     ],
   },
 ];
-
-const columnTitles: Record<string, string> = {
-  maintenance: 'Roof Maintenance & Preservation',
-  logistics: 'Roofing Logistics & Emergency Response',
-  construction: 'New Construction & Installation',
-  compliance: 'Regulatory Compliance & Certification',
-};
 
 export default function Header() {
   const [megaOpen, setMegaOpen] = useState(false);
@@ -90,28 +88,14 @@ export default function Header() {
         <div className="snr-header-inner">
           {/* Brand */}
           <a href="#" className="snr-brand" aria-label="S New Roof Inc. — Home">
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M16 2L2 12V14H6V26H14V18H18V26H26V14H30V12L16 2Z"
-                fill="white"
-              />
-              <path
-                d="M16 2L2 12H30L16 2Z"
-                fill="#00A870"
-              />
-            </svg>
-            <span className="snr-brand-text">S New Roof Inc.</span>
+            <span className="snr-brand-name">S New Roof Inc.</span>
+            <span className="snr-brand-license">C-39 Lic. #1122623</span>
           </a>
 
-          {/* Desktop Navigation */}
+          {/* Center Navigation */}
           <nav className="snr-nav" role="navigation" aria-label="Main navigation">
+            <a href="#" className="snr-nav-link">Home</a>
+
             {/* Services with mega menu trigger */}
             <div
               className="snr-mega-trigger"
@@ -129,7 +113,7 @@ export default function Header() {
                   height="6"
                   viewBox="0 0 10 6"
                   fill="none"
-                  style={{ marginLeft: '6px', display: 'inline-block', verticalAlign: 'middle', transition: 'transform 0.2s ease', transform: megaOpen ? 'rotate(180deg)' : 'rotate(0)' }}
+                  style={{ marginLeft: '4px', display: 'inline-block', verticalAlign: 'middle', transition: 'transform 0.2s ease', transform: megaOpen ? 'rotate(180deg)' : 'rotate(0)' }}
                   aria-hidden="true"
                 >
                   <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -154,7 +138,7 @@ export default function Header() {
                         <div className="snr-mega-column-title">{column.title}</div>
                         {column.items.map((item) => (
                           <a
-                            key={item.href}
+                            key={item.href + item.label}
                             href={item.href}
                             className="snr-mega-link"
                             role="menuitem"
@@ -168,26 +152,24 @@ export default function Header() {
 
                   {/* RIGHT: Dynamic Preview Card */}
                   <div className="snr-mega-preview" aria-live="polite">
-                    <img
-                      src={activePreview.previewImage}
-                      alt={`${activePreview.title} services`}
-                      key={activePreview.key}
-                    />
-                    <div className="snr-mega-preview-label">
-                      {columnTitles[activePreview.key]}
+                    <div className="snr-mega-preview-content">
+                      <div className="snr-mega-preview-title">
+                        {activePreview.previewTitle}
+                      </div>
+                      <div className="snr-mega-preview-desc">
+                        {activePreview.previewDesc}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <a href="#maintenance" className="snr-nav-link">Maintenance</a>
-            <a href="#logistics" className="snr-nav-link">Logistics</a>
-            <a href="#construction" className="snr-nav-link">Construction</a>
-            <a href="#compliance" className="snr-nav-link">Compliance</a>
-            <a href="#contact" className="snr-btn-primary" style={{ padding: '10px 24px' }}>
-              Get a Quote
-            </a>
+            <a href="#gallery" className="snr-nav-link">Gallery</a>
+            <a href="#faq" className="snr-nav-link">FAQ</a>
+            <a href="#blog" className="snr-nav-link">Blog</a>
+            <a href="#contact" className="snr-nav-link">Contact</a>
+            <a href="#" className="snr-nav-link snr-nav-link-lang">ES</a>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -198,11 +180,11 @@ export default function Header() {
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileOpen ? (
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                 <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
             ) : (
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                 <path d="M3 5H17M3 10H17M3 15H17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
             )}
@@ -221,7 +203,7 @@ export default function Header() {
             <div className="snr-mobile-nav-title">{column.title}</div>
             {column.items.map((item) => (
               <a
-                key={item.href}
+                key={item.href + item.label}
                 href={item.href}
                 className="snr-mobile-nav-link"
                 onClick={() => setMobileOpen(false)}
@@ -231,9 +213,9 @@ export default function Header() {
             ))}
           </div>
         ))}
-        <div style={{ marginTop: '24px' }}>
+        <div style={{ marginTop: '20px' }}>
           <a href="#contact" className="snr-btn-primary" style={{ width: '100%', justifyContent: 'center' }} onClick={() => setMobileOpen(false)}>
-            Get a Quote
+            Call Us
           </a>
         </div>
       </div>

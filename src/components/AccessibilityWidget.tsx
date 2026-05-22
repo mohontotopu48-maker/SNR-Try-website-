@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 /* ============================================================
    S NEW ROOF INC. — GLOBAL ACCESSIBILITY WIDGET
-   Fixed position button with toggle panel for a11y options
+   Fixed button with orange accent hover, toggle panel for a11y options
    ============================================================ */
 
 interface A11yOption {
@@ -40,7 +40,7 @@ export default function AccessibilityWidget() {
         aria-expanded={isOpen}
         aria-controls="snr-a11y-panel"
       >
-        {/* Accessibility Symbol SVG (universal a11y icon) */}
+        {/* Universal Accessibility Icon */}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <circle cx="12" cy="4.5" r="2" />
           <path d="M12 8.5V13" />
