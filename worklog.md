@@ -119,3 +119,37 @@ Stage Summary:
 - Arrow icon on trigger rotates 90° when active for visual feedback
 - All form fields, dropdown, dropzone, and submit button preserved inside accordion
 - Mobile responsive: trigger and form adapt to smaller screens
+
+---
+Task ID: 9
+Agent: Main
+Task: Brand-alignment update — eliminate electric blue, harmonize with business card aesthetic
+
+Work Log:
+- Added three new brand identity tokens to :root: --brand-charcoal (#3A3F44), --brand-orange (#F68C1F), --brand-black (#000000)
+- Updated shadcn compatibility tokens: --primary → #3A3F44, --ring → #F68C1F, --chart-1 → #3A3F44, --sidebar-primary → #3A3F44, --sidebar-ring → #F68C1F
+- CTA trigger button: changed from electric blue (#0073C2) to solid black (--brand-black), hover fills to vibrant orange (--brand-orange)
+- Kicker badge (.snr-hero-overline): replaced soft blue bubble with white background + 3px solid orange left border + black text, border-radius: 0
+- Stats bar (.snr-video-stats): converted background to premium --brand-charcoal, metrics to #FFFFFF white, labels to rgba(255,255,255,0.55) silver, dividers to rgba(255,255,255,0.12)
+- Eliminated ALL --snr-blue usage from layout/button/interactive elements across entire CSS (30+ replacements)
+- Updated button system: .snr-btn-primary now charcoal bg → orange hover, .snr-btn-outline hover → charcoal
+- Form elements: input focus rings, dropdown highlights, dropzone states all shifted from blue to charcoal/orange
+- AI chat panel: send button charcoal → orange hover, quick replies charcoal → orange hover, user bubbles charcoal, tab hover → orange
+- Footer social buttons: hover from blue glow to orange glow
+- Compliance modal: submit button charcoal → orange hover, input/textarea focus → charcoal, radio accent → orange
+- Accessibility widget: toggle active state → charcoal, section titles → charcoal
+- Navigation: link hover → charcoal, language toggle hover → orange, mobile toggle hover → charcoal
+- Service card icons, about stat values, mega menu titles, overline class all shifted from blue to charcoal
+- Proof star icon changed from blue to orange
+- About highlight block changed from blue left-border to orange left-border
+- ::selection highlight changed from blue to orange
+- All --snr-blue variable definitions retained in :root for backwards compatibility but no longer referenced
+- ESLint passes clean, dev server compiles without errors
+
+Stage Summary:
+- Electric blue (#0073C2) completely eliminated from all buttons, layout elements, and interactive states
+- Brand identity now centered on charcoal/orange/black triad matching business card
+- CTA button: black default → orange hover transition (0.3s ease)
+- Kicker badge: sharp white + orange left border replaces blue pill
+- Stats bar: premium charcoal background with white/silver typography
+- 30+ CSS class updates across hero, forms, chat, footer, compliance, accessibility, navigation, and service grid
