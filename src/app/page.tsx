@@ -8,6 +8,7 @@ import ProcessPipeline from '@/components/ProcessPipeline';
 import Differentiators from '@/components/Differentiators';
 import Footer from '@/components/Footer';
 import AccessibilityWidget from '@/components/AccessibilityWidget';
+import FloatingAIChatTab from '@/components/FloatingAIChatTab';
 
 /* ============================================================
    S NEW ROOF INC. — MAIN PAGE
@@ -34,6 +35,7 @@ export default function Home() {
         <Footer />
       </div>
       <AccessibilityWidget />
+      <FloatingAIChatTab />
     </div>
   );
 }
