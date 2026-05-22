@@ -925,7 +925,7 @@
   line-height: 1.5;
 }
 
-/* Material Integrity Block */
+/* Material Suppliers Block */
 .snr-materials-block {
   margin-top: 48px;
   display: grid;
@@ -938,8 +938,21 @@
   background-color: var(--snr-canvas);
 }
 
+/* Vertical variant: text on top, image centered below */
+.snr-materials-block--vertical {
+  grid-template-columns: 1fr;
+  gap: 32px;
+  text-align: center;
+  padding: 48px 40px;
+}
+
 .snr-materials-content {
   max-width: 440px;
+}
+
+.snr-materials-content--centered {
+  max-width: 560px;
+  margin: 0 auto;
 }
 
 .snr-materials-title {
@@ -961,6 +974,12 @@
   border-radius: var(--snr-radius-md);
   overflow: hidden;
   border: 1px solid var(--snr-border-card);
+}
+
+.snr-materials-image--centered {
+  max-width: 800px;
+  margin: 0 auto;
+  border: none;
 }
 
 .snr-materials-image img {

@@ -45,3 +45,24 @@ Stage Summary:
 - Brand container uses clean flex alignment: logo left, text right, perfectly vertically centered
 - All SVG class names prefixed with snr- to avoid CSS conflicts
 - Zero compilation errors, zero lint warnings
+
+---
+Task ID: 5
+Agent: Main
+Task: Remove hallucinated image_35096d.jpg, replace material suppliers section with correct image_3509e3.jpg and exact copy
+
+Work Log:
+- Confirmed image_35096d.jpg was never referenced in source code (no grep matches) — hallucinated asset never existed in codebase
+- Generated image_3509e3.jpg (1344x768 supplier brand logos banner) via z-ai CLI and saved to public/images/
+- Updated Differentiators.tsx: replaced image_34378c.jpg with image_3509e3.jpg in Material Suppliers Block
+- Restructured Material Suppliers Block from 2-column side-by-side to vertical layout (text top, image centered below)
+- Added exact copy text: headline "We use only the best materials for your project." and sub-headline "Our good relationships with reputable brands allow us to offer you peace of mind through our extensive warranties."
+- Added CSS modifier classes: .snr-materials-block--vertical (single column, centered text), .snr-materials-content--centered (max-width 560px, auto margin), .snr-materials-image--centered (max-width 800px, auto margin, no border)
+- Updated alt text to include Owens Corning, GAF, CertainTeed, Polyglass, Malarkey, IKO
+- Verified dev server compiles cleanly (200 responses), ESLint passes with zero errors
+
+Stage Summary:
+- Hallucinated image_35096d.jpg confirmed absent from codebase
+- Material Suppliers section now uses image_3509e3.jpg with clean centered layout
+- Exact copy text integrated per user specification
+- Crisp white container with text on top, supplier logos image centered below

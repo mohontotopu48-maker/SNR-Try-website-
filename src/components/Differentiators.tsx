@@ -74,21 +74,20 @@ export default function Differentiators() {
           ))}
         </div>
 
-        {/* Material Integrity Block with image_34378c.jpg */}
-        <div className="snr-materials-block">
-          <div className="snr-materials-content">
+        {/* Material Suppliers Block — image_3509e3.jpg */}
+        <div className="snr-materials-block snr-materials-block--vertical">
+          <div className="snr-materials-content snr-materials-content--centered">
             <h3 className="snr-materials-title">
               We use only the best materials for your project.
             </h3>
             <p className="snr-materials-desc">
-              Our good relationships with reputable brands allow us to offer you peace
-              of mind through our extensive warranties.
+              Our good relationships with reputable brands allow us to offer you peace of mind through our extensive warranties.
             </p>
           </div>
-          <div className="snr-materials-image">
+          <div className="snr-materials-image snr-materials-image--centered">
             <img
-              src="/images/image_34378c.jpg"
-              alt="Our trusted material supplier brands — Owens Corning, Polyglass, GAF, CertainTeed"
+              src="/images/image_3509e3.jpg"
+              alt="Our trusted material supplier brands — Owens Corning, GAF, CertainTeed, Polyglass, Malarkey, IKO"
             />
           </div>
         </div>
