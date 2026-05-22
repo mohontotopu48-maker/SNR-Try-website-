@@ -627,7 +627,7 @@
 .snr-hero-left {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 20px;
   max-width: 580px;
 }
 
@@ -637,11 +637,115 @@
   align-items: center;
 }
 
+/* ── Accordion Trigger Button ── */
+.snr-request-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 15px 28px;
+  font-family: var(--snr-font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background-color: var(--snr-blue);
+  border: none;
+  border-radius: var(--snr-radius-sm);
+  cursor: pointer;
+  transition: background-color var(--snr-transition-fast), transform var(--snr-transition-fast), box-shadow var(--snr-transition-fast);
+}
+
+.snr-request-trigger:hover {
+  background-color: var(--snr-blue-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 115, 194, 0.3);
+}
+
+.snr-request-trigger:active {
+  transform: translateY(0);
+}
+
+.snr-request-trigger--active {
+  background-color: var(--snr-blue-hover);
+  border-radius: var(--snr-radius-sm) var(--snr-radius-sm) 0 0;
+}
+
+.snr-request-trigger--active:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.snr-request-trigger-text {
+  white-space: nowrap;
+}
+
+.snr-request-trigger-arrow {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.snr-request-trigger--active .snr-request-trigger-arrow {
+  transform: rotate(90deg);
+}
+
+/* ── Accordion Form Container ── */
+.snr-request-accordion {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.snr-request-accordion--open {
+  max-height: 900px;
+  opacity: 1;
+}
+
+.snr-request-accordion-inner {
+  position: relative;
+  padding-top: 0;
+}
+
+/* Close button inside accordion */
+.snr-request-accordion-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--snr-border-card);
+  background-color: var(--snr-canvas);
+  color: var(--snr-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--snr-transition-fast);
+  z-index: 10;
+  transform: rotate(45deg);
+}
+
+.snr-request-accordion-close:hover {
+  border-color: var(--snr-blue);
+  color: var(--snr-blue);
+  background-color: var(--snr-blue-light);
+}
+
+.snr-request-accordion-close:focus-visible {
+  outline: 2px solid var(--snr-blue);
+  outline-offset: 2px;
+}
+
 /* ── Service Request Card ── */
 .snr-request-card {
   background-color: var(--snr-canvas);
   border: 1px solid var(--snr-border-card);
-  border-radius: var(--snr-radius-xl);
+  border-top: none;
+  border-radius: 0 0 var(--snr-radius-xl) var(--snr-radius-xl);
   box-shadow: var(--snr-shadow-md);
   overflow: hidden;
 }
@@ -2624,6 +2728,12 @@
     transform: translateY(0);
   }
 
+  /* Accordion trigger mobile */
+  .snr-request-trigger {
+    font-size: 0.75rem;
+    padding: 14px 20px;
+  }
+
   /* Request form spacing */
   .snr-request-card-header {
     padding: 16px 20px 0;
@@ -2632,6 +2742,10 @@
   .snr-request-form {
     padding: 16px 20px 20px;
     gap: 12px;
+  }
+
+  .snr-request-accordion--open {
+    max-height: 1000px;
   }
 }
 

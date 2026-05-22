@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 
 /* ============================================================
    S NEW ROOF INC. — HERO SECTION (CONVERSION-OPTIMIZED)
-   Left: Hero copy + Service Request Card with image upload
+   Left: Hero copy + Accordion Service Request Card
    Right: Testimonial Video Card
    ============================================================ */
 
@@ -17,12 +17,33 @@ const serviceOptions = [
 ];
 
 export default function Hero() {
+  const [formOpen, setFormOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const accordionRef = useRef<HTMLDivElement>(null);
+
+  const handleToggleForm = useCallback(() => {
+    setFormOpen((prev) => !prev);
+  }, []);
+
+  const handleCloseForm = useCallback(() => {
+    setFormOpen(false);
+  }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleDropdownToggle = useCallback(() => {
     setDropdownOpen((prev) => !prev);
@@ -61,6 +82,7 @@ export default function Hero() {
   const handleFormSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     alert('Thank you! Your service request has been submitted. We will contact you shortly.');
+    setFormOpen(false);
   }, []);
 
   return (
@@ -94,158 +116,202 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* ── Service Request Card ── */}
-            <div className="snr-request-card snr-animate-in snr-animate-delay-4">
-              <div className="snr-request-card-header">
-                <span className="snr-request-card-title">Request Service</span>
-                <span className="snr-request-card-badge">Free Estimate</span>
-              </div>
+            {/* ── Accordion Trigger Button ── */}
+            <button
+              type="button"
+              className={`snr-request-trigger ${formOpen ? 'snr-request-trigger--active' : ''}`}
+              onClick={handleToggleForm}
+              aria-expanded={formOpen}
+              aria-controls="snr-request-accordion"
+            >
+              <span className="snr-request-trigger-text">Request Service & AI Estimate</span>
+              <svg
+                className="snr-request-trigger-arrow"
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
 
-              <form className="snr-request-form" onSubmit={handleFormSubmit}>
-                {/* Name */}
-                <div className="snr-request-field">
-                  <label htmlFor="req-name" className="snr-request-label">Full Name</label>
-                  <input
-                    id="req-name"
-                    type="text"
-                    className="snr-request-input"
-                    placeholder="John Doe"
-                    required
-                  />
-                </div>
+            {/* ── Accordion Form Container ── */}
+            <div
+              id="snr-request-accordion"
+              ref={accordionRef}
+              className={`snr-request-accordion ${formOpen ? 'snr-request-accordion--open' : ''}`}
+              role="region"
+              aria-labelledby="hero-heading"
+            >
+              <div className="snr-request-accordion-inner">
+                {/* Close / Collapse Button */}
+                <button
+                  type="button"
+                  className="snr-request-accordion-close"
+                  onClick={handleCloseForm}
+                  aria-label="Collapse service request form"
+                >
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M10 4V16M4 10H16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </button>
 
-                {/* Phone */}
-                <div className="snr-request-field">
-                  <label htmlFor="req-phone" className="snr-request-label">Phone Number</label>
-                  <input
-                    id="req-phone"
-                    type="tel"
-                    className="snr-request-input"
-                    placeholder="(714) 000-0000"
-                    required
-                  />
-                </div>
-
-                {/* Email */}
-                <div className="snr-request-field">
-                  <label htmlFor="req-email" className="snr-request-label">Email Address</label>
-                  <input
-                    id="req-email"
-                    type="email"
-                    className="snr-request-input"
-                    placeholder="you@example.com"
-                    required
-                  />
-                </div>
-
-                {/* Service Dropdown */}
-                <div className="snr-request-field">
-                  <label htmlFor="req-service" className="snr-request-label">Service Needed</label>
-                  <div className="snr-request-dropdown" ref={dropdownRef}>
-                    <button
-                      type="button"
-                      className={`snr-request-dropdown-trigger ${selectedService && selectedService !== 'Select a Service' ? 'snr-request-dropdown-trigger--selected' : ''}`}
-                      onClick={handleDropdownToggle}
-                      aria-expanded={dropdownOpen}
-                      aria-haspopup="listbox"
-                    >
-                      <span>{selectedService || 'Select a Service'}</span>
-                      <svg
-                        width="12"
-                        height="7"
-                        viewBox="0 0 12 7"
-                        fill="none"
-                        aria-hidden="true"
-                        style={{
-                          transition: 'transform 0.2s ease',
-                          transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0)',
-                          flexShrink: 0,
-                        }}
-                      >
-                        <path d="M1 1L6 6L11 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-
-                    {dropdownOpen && (
-                      <div className="snr-request-dropdown-list" role="listbox">
-                        {serviceOptions.filter((o) => o !== 'Select a Service').map((option) => (
-                          <button
-                            key={option}
-                            type="button"
-                            className={`snr-request-dropdown-option ${selectedService === option ? 'snr-request-dropdown-option--active' : ''}`}
-                            role="option"
-                            aria-selected={selectedService === option}
-                            onClick={() => handleServiceSelect(option)}
-                          >
-                            {option}
-                          </button>
-                        ))}
-                      </div>
-                    )}
+                {/* Service Request Card */}
+                <div className="snr-request-card">
+                  <div className="snr-request-card-header">
+                    <span className="snr-request-card-title">Request Service</span>
+                    <span className="snr-request-card-badge">Free Estimate</span>
                   </div>
-                </div>
 
-                {/* Image Upload Dropzone */}
-                <div className="snr-request-field">
-                  <label className="snr-request-label">Roof Area Images</label>
-                  <div
-                    className={`snr-dropzone ${isDragOver ? 'snr-dropzone--active' : ''} ${uploadedFiles.length > 0 ? 'snr-dropzone--has-files' : ''}`}
-                    onDragOver={handleDragOver}
-                    onDragLeave={handleDragLeave}
-                    onDrop={handleDrop}
-                    onClick={() => fileInputRef.current?.click()}
-                    role="button"
-                    tabIndex={0}
-                    aria-label="Upload roof area images"
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') fileInputRef.current?.click(); }}
-                  >
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      accept="image/*"
-                      multiple
-                      capture="environment"
-                      onChange={handleFileSelect}
-                      style={{ display: 'none' }}
-                      aria-hidden="true"
-                    />
+                  <form className="snr-request-form" onSubmit={handleFormSubmit}>
+                    {/* Name */}
+                    <div className="snr-request-field">
+                      <label htmlFor="req-name" className="snr-request-label">Full Name</label>
+                      <input
+                        id="req-name"
+                        type="text"
+                        className="snr-request-input"
+                        placeholder="John Doe"
+                        required
+                      />
+                    </div>
 
-                    <div className="snr-dropzone-content">
-                      <div className="snr-dropzone-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
-                          <circle cx="12" cy="13" r="4" />
-                        </svg>
-                      </div>
-                      <div className="snr-dropzone-text">
-                        <span className="snr-dropzone-primary">Drag & Drop or Tap Camera</span>
-                        <span className="snr-dropzone-secondary">to attach roof area images for an instant AI estimate</span>
+                    {/* Phone */}
+                    <div className="snr-request-field">
+                      <label htmlFor="req-phone" className="snr-request-label">Phone Number</label>
+                      <input
+                        id="req-phone"
+                        type="tel"
+                        className="snr-request-input"
+                        placeholder="(714) 000-0000"
+                        required
+                      />
+                    </div>
+
+                    {/* Email */}
+                    <div className="snr-request-field">
+                      <label htmlFor="req-email" className="snr-request-label">Email Address</label>
+                      <input
+                        id="req-email"
+                        type="email"
+                        className="snr-request-input"
+                        placeholder="you@example.com"
+                        required
+                      />
+                    </div>
+
+                    {/* Service Dropdown */}
+                    <div className="snr-request-field">
+                      <label htmlFor="req-service" className="snr-request-label">Service Needed</label>
+                      <div className="snr-request-dropdown" ref={dropdownRef}>
+                        <button
+                          type="button"
+                          className={`snr-request-dropdown-trigger ${selectedService && selectedService !== 'Select a Service' ? 'snr-request-dropdown-trigger--selected' : ''}`}
+                          onClick={handleDropdownToggle}
+                          aria-expanded={dropdownOpen}
+                          aria-haspopup="listbox"
+                        >
+                          <span>{selectedService || 'Select a Service'}</span>
+                          <svg
+                            width="12"
+                            height="7"
+                            viewBox="0 0 12 7"
+                            fill="none"
+                            aria-hidden="true"
+                            style={{
+                              transition: 'transform 0.2s ease',
+                              transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0)',
+                              flexShrink: 0,
+                            }}
+                          >
+                            <path d="M1 1L6 6L11 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+
+                        {dropdownOpen && (
+                          <div className="snr-request-dropdown-list" role="listbox">
+                            {serviceOptions.filter((o) => o !== 'Select a Service').map((option) => (
+                              <button
+                                key={option}
+                                type="button"
+                                className={`snr-request-dropdown-option ${selectedService === option ? 'snr-request-dropdown-option--active' : ''}`}
+                                role="option"
+                                aria-selected={selectedService === option}
+                                onClick={() => handleServiceSelect(option)}
+                              >
+                                {option}
+                              </button>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
 
-                    {uploadedFiles.length > 0 && (
-                      <div className="snr-dropzone-files">
-                        {uploadedFiles.map((name, i) => (
-                          <span key={i} className="snr-dropzone-file-tag">
-                            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                              <path d="M4 8.5L7 11.5L12 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                            {name.length > 20 ? name.substring(0, 17) + '...' : name}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
+                    {/* Image Upload Dropzone */}
+                    <div className="snr-request-field">
+                      <label className="snr-request-label">Roof Area Images</label>
+                      <div
+                        className={`snr-dropzone ${isDragOver ? 'snr-dropzone--active' : ''} ${uploadedFiles.length > 0 ? 'snr-dropzone--has-files' : ''}`}
+                        onDragOver={handleDragOver}
+                        onDragLeave={handleDragLeave}
+                        onDrop={handleDrop}
+                        onClick={() => fileInputRef.current?.click()}
+                        role="button"
+                        tabIndex={0}
+                        aria-label="Upload roof area images"
+                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') fileInputRef.current?.click(); }}
+                      >
+                        <input
+                          ref={fileInputRef}
+                          type="file"
+                          accept="image/*"
+                          multiple
+                          capture="environment"
+                          onChange={handleFileSelect}
+                          style={{ display: 'none' }}
+                          aria-hidden="true"
+                        />
 
-                {/* Submit Button */}
-                <button type="submit" className="snr-request-submit">
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  Get Your Free Estimate
-                </button>
-              </form>
+                        <div className="snr-dropzone-content">
+                          <div className="snr-dropzone-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                              <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
+                              <circle cx="12" cy="13" r="4" />
+                            </svg>
+                          </div>
+                          <div className="snr-dropzone-text">
+                            <span className="snr-dropzone-primary">Drag & Drop or Tap Camera</span>
+                            <span className="snr-dropzone-secondary">to attach roof area images for an instant AI estimate</span>
+                          </div>
+                        </div>
+
+                        {uploadedFiles.length > 0 && (
+                          <div className="snr-dropzone-files">
+                            {uploadedFiles.map((name, i) => (
+                              <span key={i} className="snr-dropzone-file-tag">
+                                <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                  <path d="M4 8.5L7 11.5L12 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                                {name.length > 20 ? name.substring(0, 17) + '...' : name}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Submit Button */}
+                    <button type="submit" className="snr-request-submit">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      Get Your Free Estimate
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
 

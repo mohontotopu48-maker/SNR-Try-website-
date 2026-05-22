@@ -91,3 +91,31 @@ Stage Summary:
 - "Your Privacy Choices" link added to sub-footer with muted styling and accessible hover states
 - Full CCPA compliance form modal opens on click with smooth animation
 - Keyboard accessible with focus-visible outlines
+
+---
+Task ID: 8
+Agent: Main
+Task: Convert static Request Service form into interactive accordion/fold-out component
+
+Work Log:
+- Added `formOpen` state to Hero.tsx for accordion toggle control
+- Created premium CTA trigger button "Request Service & AI Estimate →" with brand blue (#0073C2) background and sharp corners
+- Trigger button uses `.snr-request-trigger` class with hover translateY(-1px) lift and box-shadow glow
+- When active (form open), trigger gets bottom-radius: 0 and arrow rotates 90° to indicate open state
+- Wrapped entire form (header, fields, dropdown, dropzone, submit button) inside `.snr-request-accordion` container
+- Accordion uses `max-height: 0` → `max-height: 900px` with `transition: max-height 0.4s ease-in-out, opacity 0.3s ease`
+- Added close/collapse button (rotated + icon at 45° = × visual) positioned absolute top-right of accordion inner
+- Close button hover: blue border, blue text, blue-light background
+- Form card has `border-top: none` and `border-radius: 0 0 16px 16px` to visually merge with trigger button
+- Reduced `.snr-hero-left` gap from 32px to 20px for tighter spacing when form is collapsed
+- Added `useEffect` click-outside handler for dropdown close
+- Added mobile responsive styles at 768px breakpoint for trigger and accordion
+- ESLint passes clean, dev server returns 200
+
+Stage Summary:
+- Service request form is hidden by default, showing only a premium blue CTA button
+- Clicking trigger smoothly slides down the full form with 0.4s ease-in-out transition
+- Close button (×) in top-right of expanded form allows collapsing back to clean layout
+- Arrow icon on trigger rotates 90° when active for visual feedback
+- All form fields, dropdown, dropzone, and submit button preserved inside accordion
+- Mobile responsive: trigger and form adapt to smaller screens
