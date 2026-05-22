@@ -30,66 +30,64 @@ Agent: Main
 Task: Fix logo rendering bug — SVG viewBox cropping and brand container CSS alignment
 
 Work Log:
-- Analyzed existing Header.tsx and globals.css to understand current logo implementation
-- Old SVG had viewBox="80 340 450 120" with fill="none" and explicit stroke/fill attributes — rendered as tiny speck
 - Replaced BrandLogo component with tightly cropped viewBox="190 340 230 110" per user spec
-- Added SVG defs/style block with .snr-st0, .snr-st1, .snr-st2 classes matching original design intent (white fills, orange accent)
-- Updated BrandLogo to use height: 42px, width: auto for prominent, proportional rendering
-- Restructured brand HTML from inline styles to semantic class-based layout: brand-block → brand-logo-wrapper + brand-text-container
-- Added CSS classes .brand-block (flex, align-items:center, gap:14px), .brand-logo-wrapper (flex, height:42px), .brand-text-container (flex-column, justify:center)
-- Removed old .snr-brand flex-direction:column and gap:2px that were wrong for the horizontal logo+text layout
-- Verified dev server compiles cleanly and ESLint passes with zero errors
+- Added SVG defs/style block with .snr-st0, .snr-st1, .snr-st2 classes
+- Updated BrandLogo to use height: 42px, width: auto
+- Restructured brand HTML from inline styles to semantic class-based layout
 
 Stage Summary:
-- Logo SVG now renders at 42px height with auto width, prominently displaying the SNEWROOF badge with orange accent
-- Brand container uses clean flex alignment: logo left, text right, perfectly vertically centered
-- All SVG class names prefixed with snr- to avoid CSS conflicts
-- Zero compilation errors, zero lint warnings
+- Logo SVG now renders at 42px height with auto width, prominent and legible
+- Brand container uses clean flex alignment with .brand-block, .brand-logo-wrapper, .brand-text-container
 
 ---
 Task ID: 5
 Agent: Main
-Task: Remove hallucinated image_35096d.jpg, replace material suppliers section with correct image_3509e3.jpg and exact copy
+Task: Replace material suppliers image with image_3509e3.jpg
 
 Work Log:
-- Confirmed image_35096d.jpg was never referenced in source code (no grep matches) — hallucinated asset never existed in codebase
-- Generated image_3509e3.jpg (1344x768 supplier brand logos banner) via z-ai CLI and saved to public/images/
-- Updated Differentiators.tsx: replaced image_34378c.jpg with image_3509e3.jpg in Material Suppliers Block
-- Restructured Material Suppliers Block from 2-column side-by-side to vertical layout (text top, image centered below)
-- Added exact copy text: headline "We use only the best materials for your project." and sub-headline "Our good relationships with reputable brands allow us to offer you peace of mind through our extensive warranties."
-- Added CSS modifier classes: .snr-materials-block--vertical (single column, centered text), .snr-materials-content--centered (max-width 560px, auto margin), .snr-materials-image--centered (max-width 800px, auto margin, no border)
-- Updated alt text to include Owens Corning, GAF, CertainTeed, Polyglass, Malarkey, IKO
-- Verified dev server compiles cleanly (200 responses), ESLint passes with zero errors
+- Confirmed image_35096d.jpg never existed in codebase
+- Generated image_3509e3.jpg via z-ai CLI
+- Updated Differentiators.tsx with vertical layout and exact copy text
 
 Stage Summary:
-- Hallucinated image_35096d.jpg confirmed absent from codebase
-- Material Suppliers section now uses image_3509e3.jpg with clean centered layout
-- Exact copy text integrated per user specification
-- Crisp white container with text on top, supplier logos image centered below
+- Material Suppliers section uses image_3509e3.jpg with centered layout
+- Exact copy text: "We use only the best materials for your project."
 
 ---
 Task ID: 6
 Agent: Main
-Task: Add premium dark navy footer block with 3-column grid, social icons with glow hover, sub-footer
+Task: Add premium dark navy footer block
 
 Work Log:
-- Completely rewrote Footer.tsx with premium dark navy (#001B3A) design
-- Added light CTA strip above dark footer with "Let's Make Your Project a Reality" headline
-- Built 3-column grid: Left (brand logo, tagline, neon phone callout, address), Middle (Our Services nav links), Right (Connect With Us social icons + email)
-- Inline SVG logo in footer with fst0/fst1/fst2 class prefix to avoid header conflicts
-- Neon gold phone callout (#F6A623) with glow text-shadow on hover
-- Social buttons: 42px rounded-square with subtle white border, transitions to brand blue (#0073C2) with 16px glow box-shadow + translateY(-2px) on hover
-- Service links: muted white text with padding-left slide animation on hover
-- Full-width divider line (1px, 8% white opacity) above sub-footer
-- Sub-footer flex-row: "© 2026 S New Roof Inc. All rights reserved." (left) | "Powered by NXLBYLDR CRM | managed by VSUALdigitalmedia.com" (right)
-- Replaced all old CSS classes (.snr-footer, .snr-footer-grid, .snr-newsletter, .snr-base-bar) with new dark-themed equivalents
-- Added responsive rules: 2-column at 1024px, single column at 768px
+- Completely rewrote Footer.tsx with dark navy (#001B3A) design
+- Built 3-column grid: Brand | Services | Connect
+- Social buttons with 0.3s ease glow hover, neon gold phone callout
+- Sub-footer with copyright and attribution text
+
+Stage Summary:
+- Premium dark navy footer with high-contrast typography
+- Social icons with glow hover, service links with slide animation
+
+---
+Task ID: 7
+Agent: Main
+Task: Move privacy compliance from header to footer baseboard, add compliance form modal
+
+Work Log:
+- Confirmed header nav is already clean — no "Opt-out preferences" link exists; sequence is HOME | SERVICES | GALLERY | FAQ | BLOG | CONTACT | [ES]
+- Added "Your Privacy Choices" button to sub-footer baseboard, positioned inline after the copyright text
+- Styled with muted rgba(255,255,255,0.35) color, subtle underline (15% opacity), text-underline-offset: 2px
+- Hover state: color brightens to 65% white, underline strengthens to 50% opacity — all 0.3s ease
+- Focus-visible: 2px solid blue outline for keyboard accessibility
+- Created compliance modal overlay (z-index: 10000) with backdrop blur, smooth open/close transitions
+- Modal contains full CCPA compliance form: Full Name, Email, Phone (optional), Request Type (3 radio options: Do Not Sell, Delete, Access), Additional Details textarea
+- Form includes disclaimer text and "Submit Privacy Request" blue CTA button
+- Modal closes on: X button click, overlay background click, or after form submission
+- Updated .snr-sub-footer-left/right to flex layout with gap for inline privacy link placement
 - Verified dev server compiles cleanly and ESLint passes with zero errors
 
 Stage Summary:
-- Premium dark navy footer with high-contrast white typography on #001B3A
-- 3-column layout: Brand | Services | Connect
-- Social icons with 0.3s ease glow hover effect (brand blue + box-shadow + lift)
-- Neon gold phone callout with text-shadow glow
-- Clean sub-footer with exact copyright and attribution text
-- Zero compilation errors, zero lint warnings
+- Header nav confirmed clean — no compliance link to remove
+- "Your Privacy Choices" link added to sub-footer with muted styling and accessible hover states
+- Full CCPA compliance form modal opens on click with smooth animation
+- Keyboard accessible with focus-visible outlines

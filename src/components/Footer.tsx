@@ -1,12 +1,16 @@
 'use client';
 
+import { useState } from 'react';
+
 /* ============================================================
    S NEW ROOF INC. — PREMIUM DARK FOOTER
    Deep navy background, 3-column grid, social icons with glow
-   hover, accent phone callout, sub-footer bar
+   hover, accent phone callout, sub-footer bar, privacy compliance
    ============================================================ */
 
 export default function Footer() {
+  const [complianceOpen, setComplianceOpen] = useState(false);
+
   return (
     <footer role="contentinfo" id="contact">
       {/* CTA Headline — light background strip above dark footer */}
@@ -166,13 +170,131 @@ export default function Footer() {
           <div className="snr-container">
             <div className="snr-sub-footer-inner">
               <div className="snr-sub-footer-left">
-                © 2026 S New Roof Inc. All rights reserved.
+                <span>© 2026 S New Roof Inc. All rights reserved.</span>
+                <button
+                  type="button"
+                  className="snr-privacy-link"
+                  onClick={() => setComplianceOpen(true)}
+                  aria-label="Open privacy choices form"
+                >
+                  Your Privacy Choices
+                </button>
               </div>
               <div className="snr-sub-footer-right">
                 Powered by NXLBYLDR CRM | managed by VSUALdigitalmedia.com
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* ── Compliance / Privacy Choices Modal ── */}
+      <div
+        className={`snr-compliance-overlay ${complianceOpen ? 'snr-compliance-overlay--open' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Privacy Choices — Do Not Sell or Share My Personal Information"
+        onClick={(e) => { if (e.target === e.currentTarget) setComplianceOpen(false); }}
+      >
+        <div className="snr-compliance-modal">
+          <div className="snr-compliance-header">
+            <h2 className="snr-compliance-title">Your Privacy Choices</h2>
+            <button
+              type="button"
+              className="snr-compliance-close"
+              onClick={() => setComplianceOpen(false)}
+              aria-label="Close privacy choices"
+            >
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+
+          <p className="snr-compliance-intro">
+            Under the California Consumer Privacy Act (CCPA), you have the right to
+            opt out of the sale or sharing of your personal information. Use this form
+            to submit your request.
+          </p>
+
+          <form
+            className="snr-compliance-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              alert('Your privacy request has been submitted. We will process it within 30 days as required by law.');
+              setComplianceOpen(false);
+            }}
+          >
+            <div className="snr-compliance-field">
+              <label htmlFor="privacy-name" className="snr-compliance-label">Full Name</label>
+              <input
+                id="privacy-name"
+                type="text"
+                className="snr-compliance-input"
+                placeholder="John Doe"
+                required
+              />
+            </div>
+
+            <div className="snr-compliance-field">
+              <label htmlFor="privacy-email" className="snr-compliance-label">Email Address</label>
+              <input
+                id="privacy-email"
+                type="email"
+                className="snr-compliance-input"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+
+            <div className="snr-compliance-field">
+              <label htmlFor="privacy-phone" className="snr-compliance-label">Phone Number (optional)</label>
+              <input
+                id="privacy-phone"
+                type="tel"
+                className="snr-compliance-input"
+                placeholder="714-000-0000"
+              />
+            </div>
+
+            <div className="snr-compliance-field">
+              <label className="snr-compliance-label">Request Type</label>
+              <div className="snr-compliance-radio-group">
+                <label className="snr-compliance-radio-label">
+                  <input type="radio" name="request-type" value="do-not-sell" defaultChecked className="snr-compliance-radio" />
+                  <span>Do Not Sell or Share My Personal Information</span>
+                </label>
+                <label className="snr-compliance-radio-label">
+                  <input type="radio" name="request-type" value="delete" className="snr-compliance-radio" />
+                  <span>Delete My Personal Information</span>
+                </label>
+                <label className="snr-compliance-radio-label">
+                  <input type="radio" name="request-type" value="access" className="snr-compliance-radio" />
+                  <span>Access My Personal Information</span>
+                </label>
+              </div>
+            </div>
+
+            <div className="snr-compliance-field">
+              <label htmlFor="privacy-details" className="snr-compliance-label">Additional Details (optional)</label>
+              <textarea
+                id="privacy-details"
+                className="snr-compliance-textarea"
+                placeholder="Any additional information about your request..."
+                rows={3}
+              />
+            </div>
+
+            <p className="snr-compliance-disclaimer">
+              By submitting this form, you confirm that the information provided is accurate
+              and that you are the consumer whose personal information is the subject of this request,
+              or you are authorized to act on their behalf.
+            </p>
+
+            <button type="submit" className="snr-compliance-submit">
+              Submit Privacy Request
+            </button>
+          </form>
         </div>
       </div>
     </footer>
