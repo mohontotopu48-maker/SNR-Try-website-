@@ -382,7 +382,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.85));
 }
 
 /* ── Header Phone CTA Button ── */
@@ -390,25 +389,27 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
+  padding: 9px 20px;
   font-family: var(--snr-font-heading);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   color: #FFFFFF;
-  background-color: var(--brand-orange);
-  border: none;
+  background-color: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--snr-radius-sm);
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform var(--snr-transition-fast), box-shadow var(--snr-transition-fast);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform var(--snr-transition-fast), box-shadow var(--snr-transition-fast);
   flex-shrink: 0;
 }
 
 .snr-header-phone-btn:hover {
-  background-color: #E07D14;
+  background-color: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: #FFFFFF;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(246, 140, 31, 0.45);
+  box-shadow: 0 4px 14px rgba(246, 140, 31, 0.4);
 }
 
 .brand-block {
