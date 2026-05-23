@@ -499,9 +499,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #FFFFFF;
+  background-color: #1B2130;
   z-index: 1002;
-  padding: 80px 24px 24px;
+  padding: 24px 24px 24px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -520,10 +520,10 @@
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--snr-text-heading);
+  color: #FFFFFF;
   text-decoration: none;
   padding: 14px 0;
-  border-bottom: 1px solid var(--snr-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: color var(--snr-transition-fast);
 }
 
@@ -547,6 +547,28 @@
 }
 
 .snr-mobile-toggle:hover {
+  border-color: var(--brand-orange);
+  color: var(--brand-orange);
+}
+
+/* Mobile nav close button */
+.snr-mobile-nav-close {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--snr-radius-sm);
+  color: #FFFFFF;
+  cursor: pointer;
+  margin-bottom: 16px;
+  align-self: flex-end;
+  transition: border-color var(--snr-transition-fast), color var(--snr-transition-fast);
+}
+
+.snr-mobile-nav-close:hover {
   border-color: var(--brand-orange);
   color: var(--brand-orange);
 }
@@ -2638,6 +2660,34 @@
   background-color: var(--brand-charcoal);
 }
 
+/* ── Accessibility Widget — Active CSS Classes ── */
+.snr-a11y-high-contrast {
+  --snr-text-heading: #000000;
+  --snr-text-body: #1A1A1A;
+  --snr-text-muted: #333333;
+  --snr-canvas: #FFFFFF;
+  --snr-canvas-alt: #F0F0F0;
+  filter: contrast(1.2);
+}
+
+.snr-a11y-large-text {
+  font-size: 118%;
+}
+
+.snr-a11y-reduce-motion *,
+.snr-a11y-reduce-motion *::before,
+.snr-a11y-reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.snr-a11y-focus-highlight *:focus-visible {
+  outline: 3px solid var(--brand-orange) !important;
+  outline-offset: 3px !important;
+}
+
 /* ============================================================
    MOBILE NAV
    ============================================================ */
@@ -3127,7 +3177,16 @@
 .snr-hero-v2-field {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 4px;
+}
+
+.snr-hero-v2-label {
+  font-family: var(--snr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--snr-text-muted);
 }
 
 .snr-hero-v2-input {
@@ -3163,7 +3222,8 @@
   padding-right: 36px;
 }
 
-.snr-hero-v2-select:invalid {
+.snr-hero-v2-select:invalid,
+.snr-hero-v2-select option[value=""] {
   color: var(--snr-text-light);
 }
 

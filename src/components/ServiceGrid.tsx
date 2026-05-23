@@ -140,8 +140,8 @@ export default function ServiceGrid() {
               {service.icon}
               <h3 className="snr-service-card-title">{service.title}</h3>
               <p className="snr-service-card-desc">{service.description}</p>
-              <a href={`#${service.id}`} className="snr-service-card-more">
-                Read more
+              <a href="#contact" className="snr-service-card-more">
+                Get a Quote
                 <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <path d="M2 6H10M10 6L6 2M10 6L6 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

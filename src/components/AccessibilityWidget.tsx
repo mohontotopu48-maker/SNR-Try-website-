@@ -1,34 +1,54 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 /* ============================================================
    S NEW ROOF INC. — GLOBAL ACCESSIBILITY WIDGET
    Fixed button with orange accent hover, toggle panel for a11y options
+   Actually applies CSS classes to <html> element when toggled
    ============================================================ */
 
 interface A11yOption {
   id: string;
   label: string;
+  cssClass: string;
   active: boolean;
 }
 
+// Check prefers-reduced-motion synchronously at init time
+const prefersReducedMotion = typeof window !== 'undefined'
+  && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const defaultOptions: A11yOption[] = [
+  { id: 'high-contrast', label: 'High Contrast', cssClass: 'snr-a11y-high-contrast', active: false },
+  { id: 'large-text', label: 'Larger Text', cssClass: 'snr-a11y-large-text', active: false },
+  { id: 'reduce-motion', label: 'Reduce Motion', cssClass: 'snr-a11y-reduce-motion', active: prefersReducedMotion },
+  { id: 'focus-highlight', label: 'Focus Highlights', cssClass: 'snr-a11y-focus-highlight', active: false },
+];
+
 export default function AccessibilityWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [options, setOptions] = useState<A11yOption[]>([
-    { id: 'high-contrast', label: 'High Contrast', active: false },
-    { id: 'large-text', label: 'Larger Text', active: false },
-    { id: 'reduce-motion', label: 'Reduce Motion', active: false },
-    { id: 'focus-highlight', label: 'Focus Highlights', active: false },
-  ]);
+  const [options, setOptions] = useState<A11yOption[]>(defaultOptions);
 
-  const toggleOption = (id: string) => {
+  // Apply/remove CSS classes on the <html> element when options change
+  useEffect(() => {
+    const html = document.documentElement;
+    options.forEach((opt) => {
+      if (opt.active) {
+        html.classList.add(opt.cssClass);
+      } else {
+        html.classList.remove(opt.cssClass);
+      }
+    });
+  }, [options]);
+
+  const toggleOption = useCallback((id: string) => {
     setOptions((prev) =>
       prev.map((opt) =>
         opt.id === id ? { ...opt, active: !opt.active } : opt
       )
     );
-  };
+  }, []);
 
   return (
     <>
