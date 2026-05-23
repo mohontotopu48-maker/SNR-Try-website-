@@ -86,7 +86,7 @@ export default function FloatingAIChatTab() {
       const botMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'bot',
-        text: botResponses[key] || 'Thank you for reaching out! Our team will review your inquiry and get back to you shortly. In the meantime, feel free to call us at 714-770-4756 for immediate assistance.',
+        text: (key ? botResponses[key] : undefined) || 'Thank you for reaching out! Our team will review your inquiry and get back to you shortly. In the meantime, feel free to call us at 714-770-4756 for immediate assistance.',
         timestamp: new Date(),
       };
 
