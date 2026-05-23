@@ -356,8 +356,8 @@
   left: 0;
   right: 0;
   height: var(--snr-header-height);
-  background-color: #FFFFFF;
-  border-bottom: 1px solid var(--snr-border);
+  background-color: #1B2130;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
 }
 
@@ -382,6 +382,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.85));
 }
 
 /* ── Header Phone CTA Button ── */
@@ -395,7 +396,7 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   color: #FFFFFF;
-  background-color: var(--brand-charcoal);
+  background-color: var(--brand-orange);
   border: none;
   border-radius: var(--snr-radius-sm);
   text-decoration: none;
@@ -405,9 +406,9 @@
 }
 
 .snr-header-phone-btn:hover {
-  background-color: var(--brand-orange);
+  background-color: #E07D14;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(246, 140, 31, 0.35);
+  box-shadow: 0 4px 12px rgba(246, 140, 31, 0.45);
 }
 
 .brand-block {
@@ -436,7 +437,7 @@
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--snr-text-heading);
+  color: #FFFFFF;
   line-height: 1;
 }
 
@@ -458,10 +459,10 @@
 .snr-nav-link {
   font-family: var(--snr-font-heading);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--snr-text-body);
+  color: #FFFFFF;
   text-decoration: none;
   transition: color var(--snr-transition-fast);
   cursor: pointer;
@@ -469,8 +470,10 @@
   position: relative;
 }
 
-.snr-nav-link:hover {
-  color: var(--brand-charcoal);
+.snr-nav-link:hover,
+.snr-nav-link:active,
+.snr-nav-link:focus {
+  color: var(--brand-orange);
 }
 
 .snr-nav-link-lang {
@@ -535,15 +538,16 @@
   align-items: center;
   justify-content: center;
   background: none;
-  border: 1px solid var(--snr-border-card);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--snr-radius-sm);
   cursor: pointer;
-  color: var(--snr-text-heading);
-  transition: border-color var(--snr-transition-fast);
+  color: #FFFFFF;
+  transition: border-color var(--snr-transition-fast), color var(--snr-transition-fast);
 }
 
 .snr-mobile-toggle:hover {
-  border-color: var(--brand-charcoal);
+  border-color: var(--brand-orange);
+  color: var(--brand-orange);
 }
 
 /* ============================================================
