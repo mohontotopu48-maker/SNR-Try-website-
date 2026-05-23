@@ -18,7 +18,6 @@ import FloatingAIChatTab from '@/components/FloatingAIChatTab';
 export default function Home() {
   return (
     <div
-      id="main-content"
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -27,11 +26,13 @@ export default function Home() {
       }}
     >
       <Header />
-      <Hero />
-      <About />
-      <ServiceGrid />
-      <ProcessPipeline />
-      <Differentiators />
+      <main id="main-content">
+        <Hero />
+        <About />
+        <ServiceGrid />
+        <ProcessPipeline />
+        <Differentiators />
+      </main>
       <div style={{ marginTop: 'auto' }}>
         <Footer />
       </div>

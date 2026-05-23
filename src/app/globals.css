@@ -448,7 +448,7 @@
   font-size: 0.5625rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--snr-text-muted);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* Center Nav */
@@ -3473,7 +3473,7 @@
 }
 
 .snr-hero-v2-consent-text {
-  font-size: 11px;
+  font-size: 0.75rem;
   line-height: 1.55;
   color: #9CA3AF;
   font-weight: 400;

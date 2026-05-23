@@ -15,20 +15,26 @@ interface A11yOption {
   active: boolean;
 }
 
-// Check prefers-reduced-motion synchronously at init time
-const prefersReducedMotion = typeof window !== 'undefined'
-  && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
+// Default options — reduced-motion initialized to false for SSR safety,
+// then corrected in first render via lazy initializer
 const defaultOptions: A11yOption[] = [
   { id: 'high-contrast', label: 'High Contrast', cssClass: 'snr-a11y-high-contrast', active: false },
   { id: 'large-text', label: 'Larger Text', cssClass: 'snr-a11y-large-text', active: false },
-  { id: 'reduce-motion', label: 'Reduce Motion', cssClass: 'snr-a11y-reduce-motion', active: prefersReducedMotion },
+  { id: 'reduce-motion', label: 'Reduce Motion', cssClass: 'snr-a11y-reduce-motion', active: false },
   { id: 'focus-highlight', label: 'Focus Highlights', cssClass: 'snr-a11y-focus-highlight', active: false },
 ];
 
 export default function AccessibilityWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [options, setOptions] = useState<A11yOption[]>(defaultOptions);
+  const [options, setOptions] = useState<A11yOption[]>(() => {
+    // Lazy initializer — runs client-side only during hydration
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return defaultOptions.map((opt) =>
+        opt.id === 'reduce-motion' ? { ...opt, active: true } : opt
+      );
+    }
+    return defaultOptions;
+  });
 
   // Apply/remove CSS classes on the <html> element when options change
   useEffect(() => {
