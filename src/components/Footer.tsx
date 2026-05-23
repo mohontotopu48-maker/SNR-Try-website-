@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 /* ============================================================
    S NEW ROOF INC. — PREMIUM DARK FOOTER
@@ -10,6 +11,7 @@ import { useState } from 'react';
 
 export default function Footer() {
   const [complianceOpen, setComplianceOpen] = useState(false);
+  const { toast } = useToast();
 
   return (
     <footer role="contentinfo" id="contact">
@@ -70,7 +72,7 @@ export default function Footer() {
                 <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ width: 18, height: 18, flexShrink: 0 }}>
                   <path d="M5 2H9L11 7L8.5 8.5C9.57 11.15 11.85 13.43 14.5 14.5L16 12L21 14V18C21 19.1 20.1 20 19 20C10.16 20 3 12.84 3 4C3 2.9 3.9 2 5 2Z" transform="scale(0.83) translate(2,2)" />
                 </svg>
-                714-770-4756
+                (714) 770-4756
               </a>
 
               {/* Address */}
@@ -216,7 +218,7 @@ export default function Footer() {
             className="snr-compliance-form"
             onSubmit={(e) => {
               e.preventDefault();
-              alert('Your privacy request has been submitted. We will process it within 30 days as required by law.');
+              toast({ title: 'Request Submitted', description: 'Your privacy request has been submitted. We will process it within 30 days as required by law.' });
               setComplianceOpen(false);
             }}
           >

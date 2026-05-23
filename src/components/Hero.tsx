@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 /* ============================================================
    S NEW ROOF INC. — HERO SECTION (APPLE-STYLE LIGHT THEME)
@@ -17,6 +18,7 @@ export default function Hero() {
     service: '',
   });
   const [consentChecked, setConsentChecked] = useState(false);
+  const { toast } = useToast();
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -26,11 +28,11 @@ export default function Hero() {
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     if (!consentChecked) {
-      alert('Please check the consent box to proceed.');
+      toast({ title: 'Consent Required', description: 'Please check the consent box to proceed.', variant: 'destructive' });
       return;
     }
-    alert('Thank you! Your free roof inspection has been scheduled. We will contact you shortly.');
-  }, [consentChecked]);
+    toast({ title: 'Request Submitted!', description: 'Your free roof inspection has been scheduled. We will contact you shortly.' });
+  }, [consentChecked, toast]);
 
   return (
     <section className="snr-hero-v2" aria-labelledby="hero-heading">

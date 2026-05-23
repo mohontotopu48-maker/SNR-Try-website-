@@ -57,10 +57,6 @@
   --snr-text-body: #4A5568;
   --snr-text-muted: #718096;
   --snr-text-light: #A0AEC0;
-  --snr-blue: #0073C2;
-  --snr-blue-hover: #005FA3;
-  --snr-blue-light: rgba(0, 115, 194, 0.08);
-  --snr-blue-border: rgba(0, 115, 194, 0.15);
   --snr-orange: #F68C1F;
   --snr-orange-hover: #E07D14;
   --snr-orange-light: rgba(246, 140, 31, 0.08);
@@ -1891,6 +1887,257 @@
   height: 12px;
 }
 
+/* Active card state */
+.snr-service-card--active {
+  border-color: var(--snr-orange-border);
+  box-shadow: var(--snr-shadow-md);
+}
+
+/* ── Service Detail Page (Expanded View) ── */
+.snr-service-detail-page {
+  margin-top: 40px;
+  background-color: var(--snr-canvas);
+  border: 1px solid var(--snr-border-card);
+  border-radius: var(--snr-radius-xl);
+  box-shadow: var(--snr-shadow-lg);
+  padding: 40px;
+  position: relative;
+  animation: snr-detail-slide-in 0.4s ease-out;
+}
+
+@keyframes snr-detail-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.snr-service-detail-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--snr-border-card);
+  background-color: var(--snr-canvas);
+  color: var(--snr-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--snr-transition-fast), color var(--snr-transition-fast), background-color var(--snr-transition-fast);
+  z-index: 10;
+}
+
+.snr-service-detail-close:hover {
+  border-color: var(--brand-charcoal);
+  color: var(--brand-charcoal);
+  background-color: rgba(58, 63, 68, 0.06);
+}
+
+.snr-service-detail-close:focus-visible {
+  outline: 2px solid var(--brand-orange);
+  outline-offset: 2px;
+}
+
+.snr-service-detail-inner {
+  max-width: 900px;
+}
+
+.snr-service-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.snr-service-detail-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--snr-radius-md);
+  background-color: var(--snr-orange-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.snr-service-detail-icon-wrap .snr-service-card-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0;
+  color: var(--brand-orange);
+}
+
+.snr-service-detail-title {
+  font-family: var(--snr-font-heading);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 800;
+  color: var(--snr-text-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 4px;
+}
+
+.snr-service-detail-desc {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--snr-text-body);
+  margin-bottom: 32px;
+  max-width: 720px;
+}
+
+.snr-service-detail-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.snr-service-detail-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.snr-service-detail-block-title {
+  font-family: var(--snr-font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--snr-text-heading);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.snr-service-detail-block-title svg {
+  color: var(--brand-orange);
+}
+
+.snr-service-detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.snr-service-detail-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--snr-text-body);
+}
+
+.snr-service-detail-list li svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.snr-service-detail-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  counter-reset: step-counter;
+}
+
+.snr-service-detail-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--snr-text-body);
+}
+
+.snr-service-detail-step-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--brand-charcoal);
+  color: #FFFFFF;
+  font-family: var(--snr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.snr-service-detail-ideal {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px 20px;
+  background-color: var(--snr-orange-light);
+  border-left: 3px solid var(--brand-orange);
+  border-radius: 0 var(--snr-radius-sm) var(--snr-radius-sm) 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--snr-text-body);
+  margin-bottom: 32px;
+}
+
+.snr-service-detail-ideal svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--brand-orange);
+}
+
+.snr-service-detail-ideal strong {
+  color: var(--snr-text-heading);
+  font-weight: 700;
+}
+
+.snr-service-detail-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .snr-service-detail-columns {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .snr-service-detail-page {
+    padding: 24px 20px;
+    margin-top: 24px;
+  }
+
+  .snr-service-detail-header {
+    gap: 16px;
+  }
+
+  .snr-service-detail-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .snr-service-detail-cta .snr-btn-primary,
+  .snr-service-detail-cta .snr-btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* ============================================================
    PROCESS PIPELINE
    ============================================================ */
@@ -2689,61 +2936,6 @@
 }
 
 /* ============================================================
-   MOBILE NAV
-   ============================================================ */
-
-.snr-mobile-nav {
-  display: none;
-  position: fixed;
-  top: var(--snr-header-height);
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--snr-canvas);
-  z-index: 998;
-  padding: 32px 24px;
-  overflow-y: auto;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--snr-transition-medium), visibility var(--snr-transition-medium);
-}
-
-.snr-mobile-nav--open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.snr-mobile-nav-section {
-  margin-bottom: 28px;
-}
-
-.snr-mobile-nav-title {
-  font-family: var(--snr-font-heading);
-  font-size: 0.5625rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--brand-charcoal);
-  margin-bottom: 10px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--snr-border-card);
-}
-
-.snr-mobile-nav-link {
-  display: block;
-  font-size: 0.9375rem;
-  color: var(--snr-text-body);
-  text-decoration: none;
-  padding: 8px 0;
-  transition: color var(--snr-transition-fast);
-  cursor: pointer;
-}
-
-.snr-mobile-nav-link:hover {
-  color: var(--snr-text-heading);
-}
-
-/* ============================================================
    RESPONSIVE BREAKPOINTS
    ============================================================ */
 
@@ -2944,6 +3136,31 @@
 
   .snr-ai-panel--open {
     transform: translateY(0);
+  }
+
+  /* Hero V2 — stack vertically on mobile */
+  .snr-hero-v2-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .snr-hero-v2-copy {
+    max-width: 100%;
+  }
+
+  .snr-hero-v2-form-card {
+    padding: 24px 20px 20px;
+  }
+
+  .snr-hero-v2-title {
+    font-size: clamp(2rem, 6vw, 2.75rem);
+  }
+
+  /* Hide header phone CTA button on mobile */
+  .snr-header-phone-btn {
+    display: none;
   }
 
   /* Accordion trigger mobile */
