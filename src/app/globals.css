@@ -408,6 +408,11 @@
   box-shadow: 0 4px 14px rgba(246, 140, 31, 0.4);
 }
 
+.snr-header-phone-btn:focus-visible {
+  outline: 2px solid var(--brand-orange);
+  outline-offset: 2px;
+}
+
 .brand-block {
   display: flex;
   align-items: center;
@@ -471,6 +476,12 @@
 .snr-nav-link:active,
 .snr-nav-link:focus {
   color: var(--brand-orange);
+}
+
+.snr-nav-link:focus-visible {
+  outline: 2px solid var(--brand-orange);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
 .snr-nav-link-lang {
@@ -2345,10 +2356,6 @@
 }
 
 /* ============================================================
-   FOOTER
-   ============================================================ */
-
-/* ============================================================
    FOOTER — PREMIUM DARK NAVY
    ============================================================ */
 
@@ -2399,7 +2406,7 @@
   font-size: 1.0625rem;
   font-weight: 800;
   letter-spacing: 0.02em;
-  color: #F6A623;
+  color: var(--brand-orange);
   text-decoration: none;
   transition: color 0.3s ease, text-shadow 0.3s ease;
   margin-top: 4px;
@@ -2464,7 +2471,7 @@
 }
 
 .snr-footer-email-link:hover svg {
-  color: #F6A623;
+  color: var(--brand-orange);
 }
 
 .snr-footer-counties {

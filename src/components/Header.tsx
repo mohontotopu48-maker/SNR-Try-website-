@@ -45,11 +45,16 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const toggleMobile = useCallback(() => {
-    setMobileOpen((prev) => !prev);
+    setMobileOpen((prev) => {
+      const next = !prev;
+      document.body.style.overflow = next ? 'hidden' : '';
+      return next;
+    });
   }, []);
 
   const closeMobile = useCallback(() => {
     setMobileOpen(false);
+    document.body.style.overflow = '';
   }, []);
 
   return (
