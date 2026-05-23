@@ -85,3 +85,27 @@ Stage Summary:
 - All blue (#0073C2) brand tokens removed
 - Accessibility improved (skip-to-content, toast instead of alert)
 - GitHub repo updated; Vercel deployment requires dashboard import (no CLI token available)
+
+---
+Task ID: 4
+Agent: Push & Deploy Agent
+Task: Push to GitHub and deploy to Vercel
+
+Work Log:
+- Read worklog.md for context on prior task history
+- Checked git status: branch `main` was 1 commit ahead of origin, plus 3 unstaged modified files (next.config.ts, globals.css, Header.tsx)
+- Staged all changes: `git add -A`
+- Committed with message: "Audit fixes: brand color consistency, body scroll lock, focus-visible a11y, cross-origin config"
+  - Commit hash: 31a7258
+- Set remote URL with token-authenticated format: `https://mohontotopu48-maker:${TOKEN}@github.com/mohontotopu48-maker/SNR-Try-website-.git`
+- Force pushed to `main` branch: `4ccead3..31a7258  main -> main` — SUCCESS
+- Checked Vercel CLI: v54.4.1 installed
+- Attempted `npx vercel --prod --yes`: failed — "The specified token is not valid"
+- Checked for VERCEL_TOKEN env var: not set
+- No Vercel credentials available in the environment
+- Vercel deployment requires manual dashboard setup (import GitHub repo at vercel.com/new)
+
+Stage Summary:
+- ✅ GitHub push SUCCEEDED — commit 31a7258 pushed to https://github.com/mohontotopu48-maker/SNR-Try-website-.git (main branch)
+- ❌ Vercel CLI deployment FAILED — no valid Vercel token available; must deploy via Vercel dashboard
+- Vercel dashboard instructions: Go to https://vercel.com/new → Import the GitHub repo `mohontotopu48-maker/SNR-Try-website-` → Deploy
