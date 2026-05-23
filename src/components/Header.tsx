@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 
 /* ============================================================
    S NEW ROOF INC. — HEADER (APPLE-STYLE LIGHT THEME)
-   Alert Bar + Clean White Nav + Phone CTA Button
+   Utility Top Bar + Clean White Nav + Phone CTA Button
    ============================================================ */
 
 /* Inline SVG Logo — Black version for white background header */
@@ -51,9 +51,23 @@ export default function Header() {
 
   return (
     <>
-      {/* ── ALERT BAR ── */}
-      <div className="snr-alert-bar" role="banner">
-        <span className="snr-alert-bar-text">Where Durability Meets Design</span>
+      {/* ── UTILITY TOP BAR ── */}
+      <div className="snr-utility-bar" role="banner">
+        <div className="snr-utility-bar-inner">
+          <span className="snr-utility-bar-license">
+            <svg className="snr-utility-bar-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 1L2 5V11L8 15L14 11V5L8 1Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round"/>
+              <path d="M8 5.5V10.5M5.5 8H10.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+            </svg>
+            Roofing License: <b>C-39</b> Lic. <b>#1122623</b>
+          </span>
+          <a href="tel:7147704756" className="snr-utility-bar-phone" aria-label="Call us at (714) 770-4756">
+            <svg className="snr-utility-bar-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3.62 7.12a11.05 11.05 0 005.26 5.26l1.75-.44a1 1 0 011.01.26l1.56 1.56a1 1 0 01-.26 1.6A7.97 7.97 0 018 16 8 8 0 010 8a7.97 7.97 0 011.84-4.94 1 1 0 011.6-.26l1.56 1.56a1 1 0 01.26 1.01l-.44 1.75z" fill="currentColor" transform="scale(0.68) translate(3,2)"/>
+            </svg>
+            <b>(714)</b> 770-4756
+          </a>
+        </div>
       </div>
 
       {/* ── MAIN HEADER ── */}

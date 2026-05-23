@@ -5,7 +5,7 @@
 
 /* ============================================================
    S NEW ROOF INC. — LIGHT MODE DESIGN SYSTEM
-   Apple-style minimalist aesthetic. Brand Blue + Orange Accent.
+   Apple-style minimalist aesthetic. Slate + Orange Brand Palette.
    ============================================================ */
 
 @theme inline {
@@ -81,7 +81,7 @@
   --snr-radius-lg: 12px;
   --snr-radius-xl: 16px;
   --snr-radius-2xl: 24px;
-  --snr-alert-bar-height: 32px;
+  --snr-alert-bar-height: 38px;
   --snr-header-height: 72px;
   --snr-container-max: 1200px;
   --snr-font-heading: 'Acumin Variable Concept', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -266,8 +266,8 @@
    HEADER & NAVIGATION
    ============================================================ */
 
-/* ── Alert Bar ── */
-.snr-alert-bar {
+/* ── Utility Top Bar ── */
+.snr-utility-bar {
   position: fixed;
   top: 0;
   left: 0;
@@ -280,7 +280,67 @@
   justify-content: center;
 }
 
-.snr-alert-bar-text {
+.snr-utility-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--snr-container-max);
+  padding: 0 24px;
+}
+
+.snr-utility-bar-license {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.snr-utility-bar-license .snr-utility-bar-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.snr-utility-bar-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--snr-transition-fast), opacity var(--snr-transition-fast);
+}
+
+.snr-utility-bar-phone:hover {
+  color: var(--brand-orange);
+}
+
+.snr-utility-bar-phone .snr-utility-bar-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+/* Bold accent on numbers within utility bar */
+.snr-utility-bar-license b,
+.snr-utility-bar-phone b {
+  font-weight: 600;
+}
+
+/* Legacy — retained for any residual scroll-margin reference */
+.snr-utility-bar-text-legacy {
   font-family: var(--snr-font-heading);
   font-size: 0.6875rem;
   font-weight: 600;
@@ -3223,8 +3283,13 @@
     display: flex !important;
   }
 
-  .snr-alert-bar-text {
+  .snr-utility-bar-license,
+  .snr-utility-bar-phone {
     font-size: 0.5625rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.02em;
+  }
+
+  .snr-utility-bar-inner {
+    padding: 0 16px;
   }
 }
